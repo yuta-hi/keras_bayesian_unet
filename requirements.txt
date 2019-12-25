@@ -1,0 +1,3 @@
+numpy
+tensorflow_gpu
+keras
