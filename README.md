@@ -1,9 +1,10 @@
 # Bayesian U-Net for Keras
 
 This is a Keras re-implementation for [Bayesian U-Net](https://github.com/yuta-hi/bayesian_unet)
+
 Currently, this repository only supports 2D...
 
-<img src='https://github.com/yuta-hi/bayesian_unet/blob/master/figs/bayesian_unet.gif' width='400px'>
+<img src='https://github.com/yuta-hi/bayesian_unet/blob/master/figs/bayesian_unet.gif' width='500px'>
 
 ## Requirements
 - Python 3
@@ -38,4 +39,4 @@ sampler = MCSampler(model, mc_iteration).build()
 - [bayesian_unet](https://github.com/yuta-hi/bayesian_unet)
 
 - [anatomy_viewer](https://github.com/yuta-hi/anatomy-viewer)
-<img src='https://github.com/yuta-hi/anatomy-viewer/blob/master/figs/demo.gif' width='600px'>
+<img src='https://github.com/yuta-hi/anatomy-viewer/blob/master/figs/demo.gif' width='450px'>
