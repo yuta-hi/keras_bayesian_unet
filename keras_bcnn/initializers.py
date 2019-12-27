@@ -88,7 +88,7 @@ class BilinearUpsample(Initializer):
         kernel = self.scale * _bilinear_kernel_nd(ksize)
 
         weight = np.zeros(shape)
-        weight[range(in_channels),range(out_channels),:,:] = kernel
+        weight[range(in_channels),range(out_channels),...] = kernel
         weight = weight.transpose(np.arange(ndim)[::-1]) # NOTE: transpose
 
         if dtype is None:
