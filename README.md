@@ -22,10 +22,17 @@ pip install .
 ## Usage
 - Bayesian U-Net
 ```python
-from keras_bcnn.models import BayesianUNet
+# 2D
+from keras_bcnn.models import BayesianUNet2D
 input_shape = (512, 512, 1)
 output_channles = 23
-model = BayesianUNet(input_shape, output_channles).build()
+model = BayesianUNet2D(input_shape, output_channles).build()
+
+# 3D
+from keras_bcnn.models import BayesianUNet3D
+input_shape = (128, 128, 128, 1)
+output_channles = 23
+model = BayesianUNet3D(input_shape, output_channles).build()
 ```
 
 - MC sampler
