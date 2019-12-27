@@ -23,6 +23,8 @@ class ModelArchitect(metaclass=ABCMeta):
         raise NotImplementedError()
 
 
-from .unet import UNet
-from .bayesian_unet import BayesianUNet
+from .unet_2d import UNet2D
+from .unet_3d import UNet3D
+from .bayesian_unet_2d import BayesianUNet2D
+from .bayesian_unet_3d import BayesianUNet3D
 from .mc_sampler import MCSampler

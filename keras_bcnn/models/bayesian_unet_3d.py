@@ -2,12 +2,12 @@ from __future__ import absolute_import
 
 from functools import partial
 
-from .unet import UNet
+from .unet_3d import UNet3D
 from ..layers import MCDropout
 
 
-class BayesianUNet(UNet):
-    """ Bayesian U-Net
+class BayesianUNet3D(UNet3D):
+    """ Three-dimensional Bayesian U-Net
 
     Args:
         input_shape (list): Shape of an input tensor.

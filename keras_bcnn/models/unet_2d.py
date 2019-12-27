@@ -21,11 +21,11 @@ from ..initializers import bilinear_upsample
 _batch_axis = 0
 _row_axis = 1
 _col_axis = 2
-_channel_axis = 3
+_channel_axis = -1
 
 
-class UNet(ModelArchitect):
-    """ U-Net
+class UNet2D(ModelArchitect):
+    """ Two-dimensional U-Net
 
     Args:
         input_shape (list): Shape of an input tensor.
