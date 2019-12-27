@@ -8,6 +8,7 @@ from keras.layers import Input, Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout
 from keras.layers import Cropping2D, Conv2DTranspose
 from keras.layers import Lambda
+from keras import initializers
 from keras.layers.normalization import BatchNormalization
 from keras.layers.merge import Concatenate
 import keras.backend as K
@@ -128,11 +129,15 @@ class UNet(ModelArchitect):
 
     @property
     def conv_init(self):
-        return self._conv_init
+        return initializers.get(self._conv_init)
 
     @property
     def upconv_init(self):
-        return self._upconv_init
+
+        if self._upconv_init == 'bilinear':
+            return bilinear_upsample()
+
+        return initializers.get(self._upconv_init)
 
     @property
     def bias_init(self):
@@ -151,6 +156,7 @@ class UNet(ModelArchitect):
 
     @property
     def upconv(self):
+
         return partial(Conv2DTranspose,
                         strides=self.pool_size,
                         padding='valid', use_bias=True,
