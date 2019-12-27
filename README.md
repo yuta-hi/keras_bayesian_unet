@@ -2,7 +2,7 @@
 
 This is a Keras re-implementation for [Bayesian U-Net](https://github.com/yuta-hi/bayesian_unet)
 
-Currently, this repository only supports 2D...
+Currently, this repository only supports epistemic uncertainty...
 
 <img src='https://github.com/yuta-hi/bayesian_unet/blob/master/figs/bayesian_unet.gif' width='500px'>
 
