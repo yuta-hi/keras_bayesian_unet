@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+from functools import partial
 from keras.models import Model
 from keras.layers import Input
 from keras.layers import Activation
@@ -15,11 +16,11 @@ _channel_axis = -1
 
 _reduce_table = {
     'none': lambda x: x,
-    'mean': K.mean,
-    'std': K.std,
-    'var': K.var,
-    'argmax': K.argmax,
-    'argmin': K.argmin,
+    'mean': partial(K.mean, axis=_channel_axis),
+    'std': partial(K.std, axis=_channel_axis),
+    'var': partial(K.var, axis=_channel_axis),
+    'argmax': partial(K.argmax, axis=_channel_axis),
+    'argmin': partial(K.argmin, axis=_channel_axis),
 }
 
 class MCSampler(ModelArchitect):
@@ -98,9 +99,9 @@ class MCSampler(ModelArchitect):
         probs = Lambda(lambda x: K.reshape(x, ret_shape))(probs)
 
         mean = Lambda(lambda x: K.mean(x, axis=1))(probs)
-        mean = Lambda(lambda x: self.reduce_mean(x, axis=_channel_axis))(mean)
+        mean = Lambda(lambda x: self.reduce_mean(x))(mean)
 
         variance = Lambda(lambda x: K.var(x, axis=1))(probs)
-        variance = Lambda(lambda x: self.reduce_var(x, axis=_channel_axis))(variance)
+        variance = Lambda(lambda x: self.reduce_var(x))(variance)
 
         return Model(inputs=inputs, outputs=[mean, variance])
