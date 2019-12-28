@@ -8,9 +8,7 @@ from keras.models import Model
 from keras.utils import plot_model
 import keras.backend as K
 
-from keras_bcnn.models import UNet
-from keras_bcnn.models import BayesianUNet
-from keras_bcnn.models import MCSampler
+from keras_bcnn.models import UNet2D
 from keras_bcnn.initializers import bilinear_upsample
 
 from keras.layers import UpSampling2D
@@ -18,7 +16,7 @@ from keras.layers import UpSampling2D
 _row_axis = 1
 _col_axis = 2
 
-class TestBilinerUpSample(UNet):
+class TestBilinerUpSample(UNet2D):
 
     def build(self):
         inputs = Input(self.input_shape)
@@ -34,7 +32,7 @@ class TestBilinerUpSample(UNet):
 
         return Model(inputs=inputs, outputs=outputs)
 
-class TestUpSample(UNet):
+class TestUpSample(UNet2D):
 
     @property
     def upconv(self):
